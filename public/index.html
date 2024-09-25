@@ -2,20 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <meta name="description" content="This server runs on Open Source Arras.">
-    <meta name="robots" content="index, follow">
-    <meta property="og:image" content="./round.png">
-    <meta property="og:image:width" content="54">
-    <meta property="og:image:height" content="54">
-    <title>Open Source Arras</title>
+    <title>Vortex Arras</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap">
     <link rel="stylesheet" href="/main.css" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="manifest" href="/lib/json/manifest.json">
-    <meta name="msapplication-TileColor" content="#8abc3f">
-    <meta name="theme-color" content="#8abc3f">
 </head>
 
 <body oncontextmenu="return false" id="mainBody">
@@ -26,16 +17,17 @@
     <div id="mainWrapper">
         <div id="startMenuWrapper">
             <div id="startMenu">
-                <div class="startMenuHolder linkHolder"><center>This Arras.io Private Server runs on Open Source Arras.<br>For more info, visit <a href="https://github.com/Taureon/aps-plus-plus">the GitHub Repository</a>.<br><br>Not an official Arras.io project. We are not associated with Arras.io or Momentum Studios.</center></div>
+                <div class="startMenuHolder linkHolder"><center><b>VortexOS Arras.io</b><br><br><b>Current Mode: Maze FFA</b><br>This is a free for all mode where the goal is to get the highest score possible. Players, shapes, and bosses all give you score when killed. Once you level up, you are able to upgrade your tank</center></div>
                 <div class="startMenuHolder">
                     <div class="sliderHolder">
                         <div class="slider" id="startMenuSlidingContent">
-                            <center><img width=112 height=112 src="/round.png" /></center>
-                            <h1 id="gameName">Open Source Arras<h1>
+                            <center><img width=112 height=112 src="https://vortexos.onrender.com/img/vortex_transparent.png" /></center>
+                            <h1 id="gameName">Vortex Arras<h1>
                             <div id="serverName"><h4 class="nopadding">Connecting...</h4></div>
                             <table id="serverSelector" style="display:none;"></table>
-                            <input type="text" autofocus tabindex="1" spellcheck="false" placeholder="This is the tale of" id="playerNameInput" maxlength="24" />
-                            <input type="text" class="conceal" tabindex="3" placeholder="Insert token here" id="playerKeyInput" maxlength="64" />
+                            <h2 style="font-size: 20px;" id="name">Loading...</h2>
+                            <input type="text" autofocus tabindex="1" spellcheck="false" placeholder="Loading..." id="playerNameInput" maxlength="24" disabled style="display: none"/>
+                            <input type="text" class="conceal" tabindex="3" placeholder="Loading..." id="playerKeyInput" maxlength="64" disabled style="display: none"/>
                         </div>
                         <div class="slider" id="startMenuSlidingTrigger">
                             <h3><span class="nopadding" id="viewOptionText">view options</span>&nbsp;&nbsp;<i class="arrow" id="optionArrow" style="transform:rotate(-45deg);-webkit-transform:rotate(-45deg)"></i></h3>
@@ -141,7 +133,7 @@
                                     <tbody>
                                         <tr>
                                             <td><div></div></td>
-                                            <td class="greyText"><div><e>*</e> = Needs token</div></td>
+                                            <td class="greyText"><div><e>*</e> = Needs VIP</div></td>
                                             <td><div></div></td>
                                         </tr>
                                         <tr>
@@ -193,25 +185,7 @@
                                 </table>
                             </div>
                             <div id="tabAbout">
-                                <div class="optionsHeader">Community</div>
-                                <div class="moreLinks">
-                                    <a class="link developer" href="https://github.com/Taureon/">Main Developer</a>
-                                    <a class="link developer" href="https://github.com/Zephiii/">Original Creator</a>
-                                    <a class="link discord" href="https://discord.gg/kvCAZfUCjy">Discord Server</a>
-                                </div>
-                                <div class="optionsHeader">Template</div>
-                                <div class="moreLinks">
-                                    <a class="link github" href="https://github.com/Taureon/aps-plus-plus">Source Code</a>
-                                    <a class="link github" href="https://github.com/Taureon/aps-plus-plus/issues/new">Report Bugs</a>
-                                    <a class="link codeberg" href="https://codeberg.org/Taureon/OpenSourceArras">WIP Overhaul</a>
-                                    <a class="link github" href="https://github.com/Taureon/aps-plus-plus/discussions/new?category=suggestions">Suggest Features</a>
-                                </div>
-                                <div class="optionsHeader">Resources</div>
-                                <div class="moreLinks">
-                                    <span data-ccpa-link="1"></span>
-                                    <a tabindex="-1" href="https://codepen.io/road-to-100k/full/GRpvMzb/">Road's Custom Theme Maker</a><br>
-                                    <a tabindex="-1" href="https://glitch.com/edit/#!/arras-template">Old Official Private Server Template</a>
-                                </div>
+                                Coming Soon...
                             </div>
                         </div>
                     </div>
@@ -220,7 +194,7 @@
                     </div>
                 </div>
                 <div class="startMenuHolder shrinkable">
-                    <span class="titleSpan">Changelog</span>
+                    <span class="titleSpan">Current Mode</span>
                     <div id="patchNotes" class="shadowScroll"></div>
                 </div>
             </div>
@@ -247,6 +221,11 @@
             if ($("#optColors").val() == "custom") document.getElementById("optCustom").type = "text";
         });
         if (navigator.serviceWorker) navigator.serviceWorker.register('/service-worker.js', { scope: '/' }).then(registration => console.log('Service Worker Registered'));
+
+        var userData = decodeURI(window.location.search.substring(1)).split("|");
+        document.getElementById("playerNameInput").value = userData[0];
+        document.getElementById("name").innerHTML = userData[0]
+        document.getElementById("playerKeyInput").value = userData[1];
     </script>
 </body>
 

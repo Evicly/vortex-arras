@@ -1,39 +1,13 @@
 module.exports = [
-    {
-        "key": process.env.TOKEN_1,
-        "discordID": "0",
-        "nameColor": "#ffffff",
-        "class": "developer",
-        "infiniteLevelUp": true,
-        "name": "unnamed#0000",
-        "note": "note here"
-    },
-    {
-        "key": process.env.TOKEN_2,
-        "discordID": "0",
-        "nameColor": "#ffffff",
-        "class": "developer",
-        "infiniteLevelUp": true,
-        "name": "unnamed#0000",
-        "note": "note here"
-    },
-    {
-        "key": process.env.TOKEN_3,
-        "discordID": "0",
-        "nameColor": "#ffffff",
-        "class": "developer",
-        "infiniteLevelUp": true,
-        "name": "unnamed#0000",
-        "note": "note here"
-    },
-    {
-        "key": process.env.TOKEN_4,
-        "discordID": "0",
-        "nameColor": "#ffffff",
-        "class": "developer",
-        "infiniteLevelUp": true,
-        "name": "unnamed#0000",
-        "note": "note here",
-        "administrator": true,
-    },
-]
+  {
+    key: process.env.HEAD_DEV,
+    nameColor: "#00ff00",
+    class: "developer",
+    infiniteLevelUp: true,
+    administrator: true,
+  },
+  {
+    key: process.env.MEMBER,
+    nameColor: "#0004ff",
+  },
+];
