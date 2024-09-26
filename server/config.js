@@ -148,15 +148,15 @@ module.exports = {
   ENABLE_FOOD: true,
 
   FOOD_CAP: 1, // Max normal food per normal tile.
-  FOOD_SPAWN_CHANCE: 0.7, // Likeliness of normal food spawn attempts succeeding.
+  FOOD_SPAWN_CHANCE: 0.6, // Likeliness of normal food spawn attempts succeeding.
   FOOD_SPAWN_COOLDOWN: 30, // Cooldown (in game ticks) of food spawn attempts being made.
 
   FOOD_CAP_NEST: 2, // Max nest food per nest tile.
-  FOOD_SPAWN_CHANCE_NEST: 0.2, // Likeliness of nest food spawn attempts succeeding.
+  FOOD_SPAWN_CHANCE_NEST: 0.1, // Likeliness of nest food spawn attempts succeeding.
   FOOD_SPAWN_COOLDOWN_NEST: 45, // Cooldown (in game ticks) of nest food spawn attempts being made.
 
   ENEMY_CAP_NEST: 1, // Max nest enemies per nest tile.
-  ENEMY_SPAWN_CHANCE_NEST: 0.6, // Likeliness of nest enemies spawn attempts succeeding.
+  ENEMY_SPAWN_CHANCE_NEST: 0.5, // Likeliness of nest enemies spawn attempts succeeding.
   ENEMY_SPAWN_COOLDOWN_NEST: 60, // Cooldown (in game ticks) of nest enemies spawn attempts being made.
 
   // Cooldown (in seconds) of boss spawns being announced.
