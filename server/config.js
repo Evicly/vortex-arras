@@ -3,10 +3,10 @@ module.exports = {
 
   // Game server domain.
   // If the host is 'localhost:NUMBER', the NUMBER must be the port setting.
-  host: "mnvjdg-26302.csb.app",
+  host: "https://vortex-arras.onrender.com",
 
   // Which port to run the web server on.
-  port: 26302,
+  port: 10000,
 
   // How often to update the list of the entities that players can see.
   // Has effects of when entities are activated.
@@ -117,10 +117,10 @@ module.exports = {
   BOTS: 5,
 
   // How much XP player-bots get per second until they reach LEVEL_CAP.
-  BOT_XP: 3,
+  BOT_XP: 15,
 
   // How much XP player-bots will receive when first created.
-  BOT_START_XP: 10,
+  BOT_START_XP: 0,
 
   // The chances of a player-bot upgrading a specific skill when skill upgrades are available.
   BOT_SKILL_UPGRADE_CHANCES: [1, 1, 3, 4, 4, 4, 4, 2, 1, 1],
@@ -147,7 +147,7 @@ module.exports = {
   // NOTE: Disabling it decreases lagness, also very useful if you don't need foods to be spawned.
   ENABLE_FOOD: true,
 
-  FOOD_CAP: 3, // Max normal food per normal tile.
+  FOOD_CAP: 2, // Max normal food per normal tile.
   FOOD_SPAWN_CHANCE: 0.875, // Likeliness of normal food spawn attempts succeeding.
   FOOD_SPAWN_COOLDOWN: 30, // Cooldown (in game ticks) of food spawn attempts being made.
 
@@ -160,7 +160,7 @@ module.exports = {
   ENEMY_SPAWN_COOLDOWN_NEST: 60, // Cooldown (in game ticks) of nest enemies spawn attempts being made.
 
   // Cooldown (in seconds) of boss spawns being announced.
-  BOSS_SPAWN_COOLDOWN: 60,
+  BOSS_SPAWN_COOLDOWN: 120,
   // The delay (in seconds) between the boss spawns being announced and the bosses actually spawning.
   // NOTE: The spawn message (ex. "A strange trembling...") takes half as long to appear than the boss.
   BOSS_SPAWN_DURATION: 5,

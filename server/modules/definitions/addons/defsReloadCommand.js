@@ -1,73 +1,83 @@
 let lastReloadTime = 1;
-const validCommands = ['**reload definitions', '**reload defs', '**redefs'];
+const validCommands = ["**reload definitions", "**reload", "**redefs"];
 
-Events.on('chatMessage', ({ message, socket, preventDefault }) => {
-	let perms = socket.permissions;
-    // No perms restriction
-    if (!perms || !perms.administrator) return;
+Events.on("chatMessage", ({ message, socket, preventDefault }) => {
+  let perms = socket.permissions;
+  // No perms restriction
+  if (!perms || !perms.administrator) return;
 
-    // Valid command checker
-    if (!validCommands.includes(message)) return;
-    
-    // Prevent message from sending
-    preventDefault();
+  // Valid command checker
+  if (!validCommands.includes(message)) return;
 
-    // Rate limiter for anti-lag
-    let time = performance.now();
-    let sinceLastReload = time - lastReloadTime;
-    if (sinceLastReload < 5000) {
-        socket.talk('m', Config.MESSAGE_DISPLAY_TIME, `Wait ${Math.floor((5000 - sinceLastReload) / 100) / 10} seconds and try again.`);
-        return;
-    }
-    
-    // Reload the definitions folder ---
-    lastReloadTime = time;
+  // Prevent message from sending
+  preventDefault();
 
-    // Remove function so all for(let x in arr) loops work
-    delete Array.prototype.remove;
+  // Rate limiter for anti-lag
+  let time = performance.now();
+  let sinceLastReload = time - lastReloadTime;
+  if (sinceLastReload < 5000) {
+    socket.talk(
+      "m",
+      Config.MESSAGE_DISPLAY_TIME,
+      `Wait ${
+        Math.floor((5000 - sinceLastReload) / 100) / 10
+      } seconds and try again.`
+    );
+    return;
+  }
 
-    // Purge Class
-    Class = {};
+  // Reload the definitions folder ---
+  lastReloadTime = time;
 
-    // Purge all cache entries of every file in ../definitions
-    for (let file in require.cache) {
-        if (!file.includes('definitions') || file.includes(__filename)) continue;
-        delete require.cache[file];
-    }
+  // Remove function so all for(let x in arr) loops work
+  delete Array.prototype.remove;
 
-    // Load all definitions
-    require('../combined.js');
+  // Purge Class
+  Class = {};
 
-    // Put the removal function back
-    Array.prototype.remove = function (index) {
-        if (index === this.length - 1) return this.pop();
-        let r = this[index];
-        this[index] = this.pop();
-        return r;
-    };
+  // Purge all cache entries of every file in ../definitions
+  for (let file in require.cache) {
+    if (!file.includes("definitions") || file.includes(__filename)) continue;
+    delete require.cache[file];
+  }
 
-    // Redefine all tanks and bosses
-    for (let entity of entities) {
-        // If it's a valid type and it's not a turret
-        if (!['tank', 'miniboss', 'food'].includes(entity.type)) continue;
-        if (entity.bond) continue;
+  // Load all definitions
+  require("../combined.js");
 
-        let entityDefs = JSON.parse(JSON.stringify(entity.defs));
-        // Save color to put it back later
-        let entityColor = entity.color.compiled;
+  // Put the removal function back
+  Array.prototype.remove = function (index) {
+    if (index === this.length - 1) return this.pop();
+    let r = this[index];
+    this[index] = this.pop();
+    return r;
+  };
 
-        // Redefine all properties and update values to match
-        entity.upgrades = [];
-        entity.define(entityDefs);
-        entity.destroyAllChildren();
-        entity.skill.update();
-        entity.syncTurrets();
-        entity.refreshBodyAttributes();
-        entity.color.interpret(entityColor);
-    }
+  // Redefine all tanks and bosses
+  for (let entity of entities) {
+    // If it's a valid type and it's not a turret
+    if (!["tank", "miniboss", "food"].includes(entity.type)) continue;
+    if (entity.bond) continue;
 
-    // Tell the command sender
-    socket.talk('m', Config.MESSAGE_DISPLAY_TIME, "Successfully reloaded all definitions.")
+    let entityDefs = JSON.parse(JSON.stringify(entity.defs));
+    // Save color to put it back later
+    let entityColor = entity.color.compiled;
+
+    // Redefine all properties and update values to match
+    entity.upgrades = [];
+    entity.define(entityDefs);
+    entity.destroyAllChildren();
+    entity.skill.update();
+    entity.syncTurrets();
+    entity.refreshBodyAttributes();
+    entity.color.interpret(entityColor);
+  }
+
+  // Tell the command sender
+  socket.talk(
+    "m",
+    Config.MESSAGE_DISPLAY_TIME,
+    "Successfully reloaded all definitions."
+  );
 });
 
-console.log('[defsReloadCommand.js] Loaded hot definitions reloader.');
+console.log("[defsReloadCommand.js] Loaded hot definitions reloader.");
