@@ -3,7 +3,7 @@ module.exports = {
 
   // Game server domain.
   // If the host is 'localhost:NUMBER', the NUMBER must be the port setting.
-  host: "https://vortex-arras.onrender.com",
+  host: "vortex-arras.onrender.com",
 
   // Which port to run the web server on.
   port: 10000,
