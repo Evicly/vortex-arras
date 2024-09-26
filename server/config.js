@@ -3,7 +3,7 @@ module.exports = {
 
   // Game server domain.
   // If the host is 'localhost:NUMBER', the NUMBER must be the port setting.
-  host: "scratch-mit-edu.onrender.com",
+  host: "scratch-mit-edu-0yzj.onrender.com",
 
   // Which port to run the web server on.
   port: 10000,
