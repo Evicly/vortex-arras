@@ -114,7 +114,7 @@ module.exports = {
   LEVEL_CHEAT_CAP: 0,
 
   // Amount of player-bots to spawn.
-  BOTS: 5,
+  BOTS: 1,
 
   // How much XP player-bots get per second until they reach LEVEL_CAP.
   BOT_XP: 15,
@@ -268,20 +268,20 @@ module.exports = {
         "eliteBattleship",
         "eliteSpawner",
       ],
-      amount: [5, 5, 4, 2, 1],
+      amount: [1],
       chance: 2,
       nameType: "a",
     },
     {
       bosses: ["roguePalisade"],
-      amount: [4, 1],
+      amount: [1],
       chance: 1,
       nameType: "castle",
       message: "A strange trembling...",
     },
     {
       bosses: ["summoner", "eliteSkimmer", "nestKeeper"],
-      amount: [2, 2, 1],
+      amount: [1],
       chance: 1,
       nameType: "a",
       message: "A strange trembling...",
