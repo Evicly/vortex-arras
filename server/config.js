@@ -6,7 +6,7 @@ module.exports = {
   host: "vortex-arras.netlify.app",
 
   // Which port to run the web server on.
-  port: 10000,
+  port: 8888,
 
   // How often to update the list of the entities that players can see.
   // Has effects of when entities are activated.
